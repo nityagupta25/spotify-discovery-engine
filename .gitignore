@@ -49,3 +49,6 @@ theme_results.csv
 
 # scraped community data (usernames) — keep local
 *.xlsx
+
+# CI workflows need a token with workflow scope to push — keep local
+.github/
