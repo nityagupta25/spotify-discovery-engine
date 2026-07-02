@@ -1,0 +1,97 @@
+### 1. Executive Summary
+
+1. **Theme**: Frustrations and appreciations with Spotify's functionality and features.
+2. **Root Cause**: Technical issues, algorithmic limitations, and pricing concerns.
+3. **Evidence observed repeatedly in reviews**: Complaints about ads, crashes, and repetitive recommendations, alongside praise for music selection and discovery features.
+4. **Impact on user behavior**: Users are driven to seek alternative music platforms or consider upgrading to premium for a better experience.
+
+### 2. Why do users struggle to discover new music?
+
+1. **Theme**: Discovery challenges.
+2. **Root Cause**: Behavioral, emotional, and product limitations.
+3. **Evidence observed repeatedly in reviews**: References to sticking to familiar music, feeling overwhelmed by the vast library, and dissatisfaction with recommendation algorithms.
+4. **Impact on user behavior**: Users tend to stick with known artists or genres, reducing the app's ability to introduce them to new music.
+
+### 3. Why do recommendations become repetitive?
+
+1. **Theme**: Repetitive recommendations.
+2. **Root Cause**: Algorithmic patterns, overemphasis on popular songs, and lack of diversity.
+3. **Evidence observed repeatedly in reviews**: Users mention receiving the same recommendations repeatedly and a lack of diversity in suggested music.
+4. **Impact on user behavior**: Frustration with the app, leading some to seek music discovery outside of Spotify.
+
+### 4. What frustrations appear repeatedly?
+
+1. **Theme**: User frustrations.
+2. **Root Cause**: Technical issues, recommendation frustrations, product limitations, and subscription concerns.
+3. **Evidence observed repeatedly in reviews**: Complaints about app performance, recommendation quality, ad frequency, and premium pricing.
+4. **Impact on user behavior**: Negative perceptions of the app and consideration of alternatives.
+
+### 5. What listening goals are users trying to achieve?
+
+1. **Theme**: Listening goals.
+2. **Root Cause**: Need for background music, desire for music discovery, mood management, playlist creation, and uninterrupted listening.
+3. **Evidence observed repeatedly in reviews**: Users expressing needs for relaxation, focus, mood enhancement, and playlist management.
+4. **Impact on user behavior**: Users seek out features and playlists that meet these goals, such as Discover Weekly, Release Radar, and custom playlists.
+
+### 6. What emotions appear most frequently?
+
+1. **Theme**: Emotional responses.
+2. **Root Cause**: Frustration, disappointment, boredom, excitement, and delight.
+3. **Evidence observed repeatedly in reviews**: Users express frustration with ads and technical issues, disappointment with recommendations, boredom with repetitive music, excitement over discovering new music, and delight with the music library and features.
+4. **Impact on user behavior**: These emotions influence whether users continue to use the app, upgrade to premium, or consider alternative music platforms.
+
+### 7. Which listener segments experience different discovery problems?
+
+1. **Theme**: Listener segments.
+2. **Root Cause**: Variations in user experience based on familiarity with the app, usage patterns, and subscription status.
+3. **Evidence observed repeatedly in reviews**: New users struggle with navigation, power users seek more control and diversity, free users are limited by ads and skips, and premium users expect high-quality recommendations and features.
+4. **Impact on user behavior**: Different segments have different needs and frustrations, affecting their loyalty and engagement with the app.
+
+### 8. What unmet needs emerge repeatedly?
+
+1. **Theme**: Unmet needs.
+2. **Root Cause**: Desire for control, personalization, variety, trust, and convenience.
+3. **Evidence observed repeatedly in reviews**: Users ask for more control over playlists, better personalized recommendations, more diverse music suggestions, a trustworthy algorithm, and a convenient, ad-free experience.
+4. **Impact on user behavior**: Unmet needs lead to dissatisfaction and potentially drive users to competitors that better fulfill these needs.
+
+### 9. Which recommendation surfaces fail most often?
+
+1. **Theme**: Recommendation surfaces.
+2. **Root Cause**: Algorithmic limitations, bias towards popular music, and lack of user input.
+3. **Evidence observed repeatedly in reviews**: Criticisms of Discover Weekly, Release Radar, and Smart Shuffle for being repetitive or unpersonalized.
+4. **Impact on user behavior**: Disappointment with these features may reduce user engagement with them and the app overall.
+
+### 10. When do users prefer familiarity over exploration?
+
+1. **Theme**: Preference for familiarity.
+2. **Root Cause**: Emotional state, time constraints, and context.
+3. **Evidence observed repeatedly in reviews**: Users mention preferring familiar music when stressed, in a hurry, or in certain environments.
+4. **Impact on user behavior**: Users seek out known artists or playlists during these times, potentially missing out on new music discovery.
+
+### 11. What emotional jobs are users hiring Spotify for?
+
+1. **Theme**: Emotional jobs.
+2. **Root Cause**: Need for relaxation, focus, motivation, nostalgia, excitement, and identity expression.
+3. **Evidence observed repeatedly in reviews**: Users seek Spotify for background listening, studying, workouts, and emotional connection.
+4. **Impact on user behavior**: Spotify's ability to fulfill these emotional jobs influences user satisfaction and loyalty.
+
+### 12. Which situations encourage discovery?
+
+1. **Theme**: Discovery situations.
+2. **Root Cause**: Context, mood, and availability.
+3. **Evidence observed repeatedly in reviews**: Workouts, commutes, and leisure times are mentioned as opportunities for music discovery.
+4. **Impact on user behavior**: Users are more open to new music in these situations, which can lead to increased engagement with the app and its features.
+
+### 13. Which situations suppress discovery?
+
+1. **Theme**: Discovery suppression.
+2. **Root Cause**: Decision fatigue, time pressure, stress, and multitasking.
+3. **Evidence observed repeatedly in reviews**: Users mention being less open to new music when stressed, in a hurry, or preoccupied.
+4. **Impact on user behavior**: These situations reduce the likelihood of users engaging with new music, potentially limiting the app's ability to introduce them to new artists and genres.
+
+### 14. Extract representative quotes that best capture user frustrations, desires, and unmet needs.
+
+1. **Theme**: Representative quotes.
+2. **Root Cause**: Frustrations with ads, desire for better recommendations, and need for control.
+3. **Evidence observed repeatedly in reviews**: Quotes expressing frustration with the app's limitations, disappointment with recommendations, and desire for a more personalized and controlled music experience.
+4. **Impact on user behavior**: These quotes highlight key areas where Spotify can improve to better meet user needs and increase satisfaction.

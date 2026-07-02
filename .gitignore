@@ -15,3 +15,37 @@ __pycache__/
 # local-only intermediates / scratch
 sample_for_labeling.csv
 reviews_labeled_sample61.csv
+
+# OS / editor junk & local tooling
+.DS_Store
+.claude/
+
+# personal & third-party media — never publish to this public repo
+*.jpeg
+*.jpg
+file_*.pdf
+
+# stale locally-named deck copies (the Off_Repeat_* files are the ones we publish)
+Liner_Notes_Deck.pptx
+Liner_Notes_Deck_TopFellow.pptx
+
+# deck build intermediates (node deps + preview renders)
+deck/node_modules/
+deck/spotify_deck*.pptx
+deck/spotify_deck*.pdf
+
+# raw scraped review data — contains real usernames; keep local (privacy)
+all_reviews.csv
+all_reviews_with_sentiment.csv
+appstore_reviews.csv
+chunk_*.csv
+community_reviews.csv
+reddit_spotify_posts.csv
+spotify_reviews.csv
+spotify_reviews_filtered.csv
+youtube_comments.csv
+youtube_reviews.csv
+theme_results.csv
+
+# scraped community data (usernames) — keep local
+*.xlsx
