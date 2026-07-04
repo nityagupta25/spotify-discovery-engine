@@ -7,7 +7,7 @@ p.author = "Arjun"; p.title = "Off Repeat — Spotify Discovery (Top-Fellow form
 const BG="FAF6EF", BAR="0E6B37", GREEN="1DB954", DARK="17241D", MUTE="5C6B62";
 const GT="E7F6EC", BT="E6EFF7", PT="FBE3DD", AT="FCF3D9", WHITE="FFFFFF", LINE="D8E5DC", DARKCARD="14110F";
 const F="Arial";
-const SECTIONS=["Market","Context","Research","Persona","Journey","Problem","Solution","MVP","Architecture","Metrics & Risks"];
+const SECTIONS=["Market","Context","Research","Persona","Journey","Problem","Solution","MVP","Architecture","Metrics","Risks"];
 const sh=()=>({type:"outer",color:"6B6B6B",blur:7,offset:2,angle:90,opacity:0.22});
 
 function head(s, txt){
@@ -242,30 +242,47 @@ s.addText([{text:"Shared backbone   ",options:{bold:true,color:"7DE0A0"}},{text:
 s.addText("Edge cases handled — hallucination → RAG grounding · cold-start → AI story works alone · story fatigue → one glanceable line, full story on tap.",{x:0.3,y:4.72,w:9.4,h:0.28,fontFace:F,fontSize:8,italic:true,color:MUTE,align:"center",margin:0});
 crumb(s,8);
 
-// ============ S10 — METRICS & RISKS ============
+// ============ S10 — METRICS (North Star, detailed) ============
 s=p.addSlide(); head(s,"Did they discover — or just get served?");
-card(s,0.3,1.05,5.65,1.5,GT);
-kicker(s,0.5,1.16,5.3,"★ North-Star · Meaningful Discovery Rate",BAR);
-bodyText(s,0.5,1.46,5.3,0.4,"% of weekly listening on newly-adopted artists — baseline ~0 → 35% (M3) → 60% (M12). Counts only when:",10.5,DARK,1.05);
-const cond=[["SURFACED","new to the user"],["TRIED","played ≥30s"],["KEPT","saved + returned in 7d"]];
-cond.forEach((c,i)=>{const x=0.5+i*1.8; s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y:1.9,w:1.68,h:0.55,rectRadius:0.06,fill:{color:WHITE}});
-  s.addText(c[0],{x,y:1.96,w:1.68,h:0.24,fontFace:F,fontSize:10,bold:true,color:BAR,align:"center",margin:0});
-  s.addText(c[1],{x:x+0.05,y:2.2,w:1.58,h:0.22,fontFace:F,fontSize:8.5,color:MUTE,align:"center",margin:0});});
-// metric tree
-const mt=[["LEADING","Story-attach try-rate · A/B story vs none","Target +25%",BT],["BEHAVIORAL","New-artist save-rate · 7-day return","upward by M3",BT],["GUARDRAIL","Skip-rate · session time (protect core)","flat / down",AT]];
-mt.forEach((m,i)=>{const y=2.62+i*0.58; card(s,0.3,y,5.65,0.5,m[3]);
-  s.addText(m[0],{x:0.45,y:y+0.05,w:1.5,h:0.44,fontFace:F,fontSize:9.5,bold:true,color:BAR,valign:"middle",margin:0});
-  s.addText(m[1],{x:1.95,y:y+0.05,w:2.7,h:0.44,fontFace:F,fontSize:9,color:DARK,valign:"middle",margin:0,lineSpacingMultiple:1.0});
-  s.addText(m[2],{x:4.7,y:y+0.05,w:1.1,h:0.44,fontFace:F,fontSize:9,bold:true,color:DARK,align:"right",valign:"middle",margin:0});});
-// phased rollout + strategic closer (left column, below metrics)
-bodyText(s,0.3,4.42,5.65,0.32,"Rollout — P1 (M0–3): shadow-test on 1% of Engaged Explorers · P2 (M3–6): 10% + guardrail gates · P3 (M6–12): all Premium if discovery-rate ↑ and skip-rate flat.",8.5,MUTE,1.05);
-s.addText("The loop becomes a launchpad — Off Repeat doesn't chase better recs, it earns the play.",{x:0.3,y:4.82,w:5.65,h:0.34,fontFace:F,fontSize:10,bold:true,italic:true,color:BAR,margin:0,lineSpacingMultiple:1.05});
-// risks
-card(s,6.15,1.05,3.55,3.95,PT);
-kicker(s,6.32,1.16,3.3,"Where it can fail · what we accept",BAR);
-const risk=[["Hallucinated story","ground in real facts; guardrail drops invented claims"],["AI becomes a crutch","measure if users still explore unaided; ease off over time"],["Stream-farming the reward","reward adoption (saved + returned), not raw plays"],["Story fatigue","lean-in only; one glanceable line by default"]];
-risk.forEach((r,i)=>{const y=1.5+i*0.84; s.addText(r[0],{x:6.32,y,w:3.25,h:0.26,fontFace:F,fontSize:10.5,bold:true,color:DARK,margin:0});
-  s.addText("→ "+r[1],{x:6.32,y:y+0.26,w:3.25,h:0.5,fontFace:F,fontSize:9,color:MUTE,margin:0,lineSpacingMultiple:1.05});});
+card(s,0.3,1.02,9.4,1.12,GT);
+kicker(s,0.5,1.12,9.0,"★ North Star · Meaningful Discovery Rate",BAR);
+rich(s,0.5,1.4,9.0,0.66,[{text:"= weekly listening on newly-adopted artists ÷ total.  ~0 → ",options:{color:DARK}},{text:"35% (M3) → 60% (M12)",options:{bold:true,color:BAR}},{text:".  Un-gameable — a discovery counts only when ",options:{color:DARK}},{text:"SURFACED",options:{bold:true,color:BAR}},{text:" (new to you) + ",options:{color:DARK}},{text:"TRIED",options:{bold:true,color:BAR}},{text:" (played ≥30s) + ",options:{color:DARK}},{text:"KEPT",options:{bold:true,color:BAR}},{text:" (saved & returned in 7d). Opening the feature and walking away is worth zero.",options:{color:DARK}}],9.5,1.12);
+const mrows=[
+ [{text:"Tier",options:{bold:true,color:WHITE,fill:{color:BAR}}},{text:"Metric",options:{bold:true,color:WHITE,fill:{color:BAR}}},{text:"Target",options:{bold:true,color:WHITE,fill:{color:BAR}}},{text:"Why it matters",options:{bold:true,color:WHITE,fill:{color:BAR}}}],
+ [{text:"Leading",options:{bold:true}},"Story-attach try-rate — A/B: story vs no story",{text:"+25%",options:{bold:true}},"the story, not the song, earns the play"],
+ [{text:"Leading",options:{bold:true}},"New-artist play-through vs control","↑","earliest demand signal"],
+ [{text:"Lagging",options:{bold:true}},"New-artist save-rate · 7-day return","↑ by M3","real adoption, not curiosity"],
+ [{text:"Lagging",options:{bold:true}},"Taste breadth — distinct new artists / month","+30% M6","the bubble is actually widening"],
+ [{text:"Guardrail",options:{bold:true,color:BAR}},"Skip-rate · session time",{text:"flat/down",options:{bold:true,color:BAR}},"protect core listening"],
+ [{text:"Guardrail",options:{bold:true,color:BAR}},"Unaided-exploration rate",{text:"not ↓",options:{bold:true,color:BAR}},"we are not building a crutch"],
+];
+s.addTable(mrows,{x:0.3,y:2.34,w:9.4,colW:[1.05,4.05,1.15,3.15],rowH:0.3,fontFace:F,fontSize:9,color:DARK,valign:"middle",border:{pt:0.5,color:LINE},fill:{color:WHITE},align:"left"});
+bodyText(s,0.3,4.6,9.4,0.3,"Rollout — P1 (M0–3): shadow-test on 1% of Engaged Explorers · P2 (M3–6): 10% + guardrail gates · P3 (M6–12): all Premium if discovery-rate ↑ and skip-rate flat.",8.5,MUTE,1.05);
+s.addText("The loop becomes a launchpad — Off Repeat doesn't chase better recs, it earns the play.",{x:0.3,y:4.92,w:9.4,h:0.24,fontFace:F,fontSize:10,bold:true,italic:true,color:BAR,align:"center",margin:0});
 crumb(s,9);
+
+// ============ S11 — FAILURE MODES & RISK ============
+s=p.addSlide(); head(s,"We'd rather name how it fails than pretend it won't.");
+function riskcard(x,y,sev,sc,title,why,mit){
+  card(s,x,y,4.6,1.16,WHITE);
+  s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:x+0.15,y:y+0.14,w:1.0,h:0.24,rectRadius:0.04,fill:{color:sc}});
+  s.addText(sev,{x:x+0.15,y:y+0.14,w:1.0,h:0.24,fontFace:F,fontSize:7.5,bold:true,color:WHITE,align:"center",valign:"middle",margin:0});
+  s.addText(title,{x:x+1.25,y:y+0.12,w:3.2,h:0.28,fontFace:F,fontSize:10.5,bold:true,color:DARK,valign:"middle",margin:0});
+  s.addText(why,{x:x+0.16,y:y+0.44,w:4.3,h:0.34,fontFace:F,fontSize:8.5,color:MUTE,margin:0,lineSpacingMultiple:1.02});
+  s.addText("→ "+mit,{x:x+0.16,y:y+0.79,w:4.3,h:0.3,fontFace:F,fontSize:8.5,bold:true,color:BAR,margin:0,lineSpacingMultiple:1.02});
+}
+const RCRIT="C0392B", RHIGH="C57211";
+const risks=[
+ [RCRIT,"CRITICAL","Acceptance ≠ the real driver","Much 'won't press play' is mood & effort, not missing trust — a story can add friction.","Validate the driver in Part-2 interviews; lean-in surfaces only."],
+ [RCRIT,"CRITICAL","Trust is fragile","One salesy or slightly-wrong story and users tune the layer out for good.","RAG grounding + no-fabrication guardrail; style variety; sample QA."],
+ [RCRIT,"CRITICAL","Payola & gaming","Pressure to inject promoted tracks; stream-farming the metric.","Firewall from promotion; reward saved + returned, never raw plays."],
+ [RHIGH,"HIGH","AI becomes a crutch","Users stop exploring unaided — a new trust proxy that solves nothing.","Measure unaided exploration; ease off narration as adoption grows."],
+ [RHIGH,"HIGH","Novelty decay","The first-try lift fades once the story feels normal.","Track 30/90-day adoption retention; refresh story styles."],
+ [RHIGH,"HIGH","Cold-start / long tail","Thin metadata on the obscure tracks that matter most → hallucination risk.","Confidence-gate; safe fallback cues; enrich long-tail data."],
+];
+risks.forEach((rk,i)=>{const col=i%2,row=Math.floor(i/2); riskcard(0.3+col*4.8, 1.05+row*1.28, rk[1],rk[0],rk[2],rk[3],rk[4]);});
+s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:0.3,y:4.82,w:9.4,h:0.34,rectRadius:0.05,fill:{color:"FBE9E7"}});
+s.addText([{text:"Most likely failure — ",options:{bold:true,color:RCRIT}},{text:"the story moves behavior in fewer moments than we hope. So we de-risk before building: validate the acceptance driver in interviews, ship only to lean-in moments, and design the feature to make itself unnecessary.",options:{color:DARK}}],{x:0.48,y:4.82,w:9.05,h:0.34,fontFace:F,fontSize:8.5,valign:"middle",margin:0,lineSpacingMultiple:1.0});
+crumb(s,10);
 
 p.writeFile({fileName:"spotify_deck_v2.pptx"}).then(f=>console.log("WROTE",f));
