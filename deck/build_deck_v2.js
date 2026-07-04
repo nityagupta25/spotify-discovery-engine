@@ -7,7 +7,7 @@ p.author = "Arjun"; p.title = "Off Repeat — Spotify Discovery (Top-Fellow form
 const BG="FAF6EF", BAR="0E6B37", GREEN="1DB954", DARK="17241D", MUTE="5C6B62";
 const GT="E7F6EC", BT="E6EFF7", PT="FBE3DD", AT="FCF3D9", WHITE="FFFFFF", LINE="D8E5DC", DARKCARD="14110F";
 const F="Arial";
-const SECTIONS=["Market","Context","Research","Persona & Journey","Problem","Solution","MVP","Architecture","Metrics","Risks"];
+const SECTIONS=["Market","Research","Persona & Journey","Problem","Solution","MVP","Architecture","Metrics","Risks"];
 const sh=()=>({type:"outer",color:"6B6B6B",blur:7,offset:2,angle:90,opacity:0.22});
 
 function head(s, txt){
@@ -29,6 +29,19 @@ function kicker(s,x,y,w,txt,color=BAR){ s.addText(txt.toUpperCase(),{x,y,w,h:0.2
 function rich(s,x,y,w,h,runs,fs=11,ls=1.08){ s.addText(runs,{x,y,w,h,fontFace:F,fontSize:fs,margin:0,lineSpacingMultiple:ls}); }
 function bodyText(s,x,y,w,h,t,fs=11,color=DARK,ls=1.08){ s.addText(t,{x,y,w,h,fontFace:F,fontSize:fs,color,margin:0,lineSpacingMultiple:ls}); }
 
+// ============ S0 — COVER ============
+{ const c=p.addSlide(); c.background={color:BAR};
+  c.addShape(p.shapes.OVAL,{x:0.6,y:0.62,w:0.5,h:0.5,fill:{color:GREEN}});
+  c.addText("✦",{x:0.6,y:0.6,w:0.5,h:0.5,fontFace:F,fontSize:22,bold:true,color:"03240F",align:"center",valign:"middle",margin:0});
+  c.addText("NEXTLEAP PM FELLOWSHIP   ·   SPOTIFY · GROWTH TEAM",{x:1.25,y:0.7,w:8.2,h:0.35,fontFace:F,fontSize:11,bold:true,color:"BFE9CD",charSpacing:2,valign:"middle",margin:0});
+  c.addText("Off Repeat",{x:0.58,y:1.55,w:9,h:1.1,fontFace:F,fontSize:54,bold:true,color:WHITE,margin:0});
+  c.addShape(p.shapes.RECTANGLE,{x:0.64,y:2.72,w:2.6,h:0.07,fill:{color:GREEN}});
+  c.addText("Spotify perfected recommendation. Discovery still stalls — because the gap was never accuracy. It's acceptance: a reason to press play on the unfamiliar.",{x:0.62,y:3.0,w:8.7,h:1.0,fontFace:F,fontSize:16,color:"F2FBF5",margin:0,lineSpacingMultiple:1.2});
+  c.addText("You have On Repeat. Meet Off Repeat.",{x:0.62,y:4.05,w:8.7,h:0.4,fontFace:F,fontSize:14,bold:true,italic:true,color:"7DE0A0",margin:0});
+  c.addText([{text:"▶ Live prototype + AI workflow   ·   ",options:{bold:true}},{text:"github.com/arjuncooliitr/spotify-discovery-engine",options:{}}],{x:0.62,y:4.72,w:8.8,h:0.3,fontFace:F,fontSize:10.5,color:WHITE,margin:0});
+  c.addText("Figures: Spotify reported MAU / Premium; repeat-listening & genre-diversity from published personalization research. Reviews: 7,296 analyzed via an AI review engine.",{x:0.62,y:5.08,w:8.8,h:0.35,fontFace:F,fontSize:7.5,color:"9CC7AC",margin:0,lineSpacingMultiple:1.0});
+}
+
 // ============ S1 — MARKET ============
 let s=p.addSlide(); head(s,"Spotify perfected recommendation. Discovery still stalls.");
 const stats=[["~675M","monthly active users (reported)",GT],["263M","Premium subscribers",GT],["~30%","of listening is repeat / familiar",PT],["−12%","genre diversity in 6 mo · Discover Weekly (research)",PT]];
@@ -43,33 +56,10 @@ para.forEach((q,i)=>{const y=3.62+i*0.46; s.addShape(p.shapes.OVAL,{x:0.55,y:y+0
   rich(s,0.8,y-0.05,5.1,0.42,[{text:q[0]+" — ",options:{bold:true,color:DARK}},{text:q[1],options:{color:MUTE}}],11);});
 card(s,6.2,2.55,3.5,2.5,GT);
 kicker(s,6.4,2.68,3.1,"What's missing",BAR);
-bodyText(s,6.4,3.0,3.15,1.4,"Every platform competes on recommendation accuracy. None has built the acceptance layer — a reason to press play on the unfamiliar.",12.5,DARK,1.12);
+bodyText(s,6.4,3.0,3.15,1.4,"Discover Weekly, AI DJ, SongDNA — every fix improves WHAT to recommend. None built the acceptance layer: a reason to press play on the unfamiliar.",12,DARK,1.12);
 s.addText("The market gap is acceptance, not accuracy.",{x:6.4,y:4.5,w:3.15,h:0.45,fontFace:F,fontSize:11.5,bold:true,italic:true,color:BAR,margin:0,lineSpacingMultiple:1.05});
 crumb(s,0);
 
-// ============ S2 — CONTEXT ============
-s=p.addSlide(); head(s,"Everyone optimized accuracy. Nobody optimized acceptance.");
-kicker(s,0.3,1.02,3.2,"What the ecosystem solved");
-const solved=[["Recommendation accuracy","Spotify · Apple · YouTube"],["Natural-language playlists","AI DJ · Prompted Playlist"],["Song context / credits","SongDNA"]];
-solved.forEach((r,i)=>{const y=1.32+i*0.62; card(s,0.3,y,3.25,0.54,GT);
-  s.addText(r[0],{x:0.45,y:y+0.05,w:3.0,h:0.26,fontFace:F,fontSize:11,bold:true,color:DARK,margin:0});
-  s.addText(r[1],{x:0.45,y:y+0.3,w:3.0,h:0.22,fontFace:F,fontSize:9.5,color:MUTE,margin:0});});
-kicker(s,0.3,3.3,3.2,"What nobody solved",BAR);
-const unsolved=["A reason to TRY the unfamiliar","Trust in a brand-new rec","Why THIS song, for YOU"];
-unsolved.forEach((t,i)=>{const y=3.6+i*0.46; card(s,0.3,y,3.25,0.4,PT);
-  s.addText("✗  "+t,{x:0.45,y:y+0.03,w:3.0,h:0.34,fontFace:F,fontSize:10.5,bold:true,color:DARK,valign:"middle",margin:0});});
-// middle: why each fails
-kicker(s,3.75,1.02,2.9,"Why each existing fix falls short");
-const fails=[["Discover Weekly / Daylist","Personalizes you into a tighter loop — diversity drops over time."],["AI DJ / Prompted Playlist","Lets you ask, but still just serves — generic, not personal to your history."],["SongDNA / Smart Shuffle","Facts and reshuffles — gives no reason to care about a new track."]];
-fails.forEach((f,i)=>{const y=1.32+i*1.0; card(s,3.75,y,2.9,0.9,WHITE);
-  s.addText(f[0],{x:3.9,y:y+0.08,w:2.62,h:0.28,fontFace:F,fontSize:11,bold:true,color:DARK,margin:0});
-  s.addText(f[1],{x:3.9,y:y+0.36,w:2.62,h:0.5,fontFace:F,fontSize:9.5,color:MUTE,margin:0,lineSpacingMultiple:1.05});});
-// right: hypothesis
-card(s,6.85,1.05,2.85,3.95,BT);
-kicker(s,7.05,1.2,2.5,"Hypothesis",BAR);
-bodyText(s,7.05,1.52,2.5,2.0,"Accuracy is a solved problem. The unsolved problem is acceptance: users won't act on a recommendation they have no reason to trust.\n\nWhen the unfamiliar arrives with no story and no signal, the safe move is to skip — back to the familiar.",11.5,DARK,1.14);
-s.addText("Users don't need better recs. They need a reason to say yes to the ones they already get.",{x:7.05,y:3.95,w:2.5,h:0.95,fontFace:F,fontSize:11.5,bold:true,italic:true,color:BAR,margin:0,lineSpacingMultiple:1.1});
-crumb(s,1);
 
 // ============ S3 — RESEARCH ============
 s=p.addSlide(); head(s,"We didn't survey 30 people. We analyzed 7,296 reviews.");
@@ -91,7 +81,7 @@ bodyText(s,7.05,1.5,2.5,1.0,"Planned: 5–6 interviews with Engaged Explorers (P
 s.addShape(p.shapes.LINE,{x:7.05,y:2.65,w:2.5,h:0,line:{color:LINE,width:1}});
 bodyText(s,7.05,2.75,2.5,1.6,"Secondary research:\n• Discover Weekly cut genre diversity ~12% in 6 mo\n• LLMs/algorithms narrow taste as engagement rises\n• Personalization → homogenization (popularity bias)",10,MUTE,1.12);
 s.addText("Users aren't failing to discover — they're refusing to accept.",{x:0.3,y:4.62,w:9.4,h:0.5,fontFace:F,fontSize:13,bold:true,italic:true,color:BAR,align:"center",margin:0});
-crumb(s,2);
+crumb(s,1);
 
 // ============ S4 — PERSONA & JOURNEY ============
 s=p.addSlide(); head(s,"Who they are — and the exact moment discovery breaks.");
@@ -124,7 +114,7 @@ jstage.forEach((st,i)=>{const x=jx+i*(jw+jg); card(s,x,3.54,jw,1.0,i===3?PT:WHIT
   s.addText(st[2],{x:x+0.09,y:4.24,w:jw-0.18,h:0.24,fontFace:F,fontSize:8.5,bold:true,color:i===3?WHITE:DARK,align:"center",valign:"middle",margin:0});
   if(i<4) s.addShape(p.shapes.LINE,{x:x+jw+0.005,y:4.04,w:jg-0.01,h:0,line:{color:GREEN,width:2,endArrowType:"triangle"}});});
 rich(s,0.3,4.68,9.4,0.42,[{text:"The failure is the silent skip at stage 4 — ",options:{bold:true,color:BAR}},{text:"the unfamiliar arrives with no story, no reason to risk a listen; the loop tightens and the algorithm reads the skip as 'dislike,' narrowing further.",options:{color:DARK}}],9,1.05);
-crumb(s,3);
+crumb(s,2);
 
 // ============ S6 — PROBLEM FRAMING ============
 s=p.addSlide(); head(s,"The gap isn't accuracy. It's acceptance.");
@@ -142,7 +132,7 @@ s.addText("All listeners",{x:6.75,y:1.6,w:2.0,h:0.25,fontFace:F,fontSize:9,bold:
 s.addText("Premium ~263M",{x:7.0,y:2.05,w:1.8,h:0.25,fontFace:F,fontSize:9,bold:true,color:DARK,margin:0});
 s.addText("Engaged\nExplorers",{x:7.25,y:2.78,w:1.2,h:0.6,fontFace:F,fontSize:8.5,bold:true,color:WHITE,align:"center",margin:0,lineSpacingMultiple:0.9});
 s.addText("Start with Engaged Explorers: highest LTV, feel the pain most, most articulate. Win them → expand to all Premium.",{x:6.65,y:4.25,w:2.95,h:0.7,fontFace:F,fontSize:9,color:MUTE,margin:0,lineSpacingMultiple:1.08});
-crumb(s,4);
+crumb(s,3);
 
 // ============ S7 — SOLUTION ============
 s=p.addSlide(); head(s,"Three ways to break the bubble. Only one earns trust.");
@@ -160,7 +150,7 @@ s.addTable(rows,{x:0.3,y:3.4,w:4.6,colW:[1.6,1.0,1.0,1.0],rowH:0.27,fontFace:F,f
 card(s,5.1,3.4,4.6,1.6,GT);
 kicker(s,5.3,3.5,4.2,"Why Off Repeat wins",BAR);
 bodyText(s,5.3,3.78,4.25,1.15,"• Keeps the user the decider — supports judgment, doesn't replace it\n• Targets the real failure: the unfamiliar arriving with no reason to try it\n• Stakes-adaptive: light for casual, rich for high-intent discovery\n• Real moat: a personalized taste-narrative profile rivals can't copy",10,DARK,1.12);
-crumb(s,5);
+crumb(s,4);
 
 // ============ S8 — MVP ============
 s=p.addSlide(); head(s,"You have On Repeat. Meet Off Repeat.");
@@ -183,7 +173,7 @@ mock.forEach((m,i)=>{const y=1.6+i*1.08; s.addShape(p.shapes.ROUNDED_RECTANGLE,{
   s.addText(m[1],{x:4.45,y:y+0.31,w:4.7,h:0.2,fontFace:F,fontSize:8.5,color:"AFAFAF",margin:0});
   s.addText(m[2],{x:4.45,y:y+0.5,w:4.85,h:0.3,fontFace:F,fontSize:9,italic:true,color:"D8D8D8",margin:0,lineSpacingMultiple:1.0});
   s.addText(m[3],{x:4.45,y:y+0.76,w:4.85,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:m[4],margin:0});});
-crumb(s,6);
+crumb(s,5);
 
 // ============ S9 — FULL ARCHITECTURE ============
 s=p.addSlide(); head(s,"One grounded engine, twice — to find the problem, then fix it.");
@@ -216,7 +206,7 @@ s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:0.3,y:4.02,w:9.4,h:0.6,rectRadius:0.06,
 s.addText([{text:"Shared backbone   ",options:{bold:true,color:"7DE0A0"}},{text:"grounded generative AI · no-fabrication guardrail (RAG over real facts) · Groq LLM + sentence-transformer embeddings — the rigor that made the research trustworthy makes the feature trustworthy.",options:{color:"ECECEC"}}],{x:0.5,y:4.08,w:9.0,h:0.48,fontFace:F,fontSize:9,align:"center",valign:"middle",margin:0,lineSpacingMultiple:1.02});
 // edge/guardrail micro-note
 s.addText("Edge cases handled — hallucination → RAG grounding · cold-start → AI story works alone · story fatigue → one glanceable line, full story on tap.",{x:0.3,y:4.72,w:9.4,h:0.28,fontFace:F,fontSize:8,italic:true,color:MUTE,align:"center",margin:0});
-crumb(s,7);
+crumb(s,6);
 
 // ============ S10 — METRICS (North Star, detailed) ============
 s=p.addSlide(); head(s,"Did they discover — or just get served?");
@@ -235,7 +225,7 @@ const mrows=[
 s.addTable(mrows,{x:0.3,y:2.34,w:9.4,colW:[1.05,4.05,1.15,3.15],rowH:0.3,fontFace:F,fontSize:9,color:DARK,valign:"middle",border:{pt:0.5,color:LINE},fill:{color:WHITE},align:"left"});
 bodyText(s,0.3,4.6,9.4,0.3,"Rollout — P1 (M0–3): shadow-test on 1% of Engaged Explorers · P2 (M3–6): 10% + guardrail gates · P3 (M6–12): all Premium if discovery-rate ↑ and skip-rate flat.",8.5,MUTE,1.05);
 s.addText("The loop becomes a launchpad — Off Repeat doesn't chase better recs, it earns the play.",{x:0.3,y:4.92,w:9.4,h:0.24,fontFace:F,fontSize:10,bold:true,italic:true,color:BAR,align:"center",margin:0});
-crumb(s,8);
+crumb(s,7);
 
 // ============ S11 — FAILURE MODES & RISK ============
 s=p.addSlide(); head(s,"We'd rather name how it fails than pretend it won't.");
@@ -259,6 +249,6 @@ const risks=[
 risks.forEach((rk,i)=>{const col=i%2,row=Math.floor(i/2); riskcard(0.3+col*4.8, 1.05+row*1.28, rk[1],rk[0],rk[2],rk[3],rk[4]);});
 s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:0.3,y:4.82,w:9.4,h:0.34,rectRadius:0.05,fill:{color:"FBE9E7"}});
 s.addText([{text:"Most likely failure — ",options:{bold:true,color:RCRIT}},{text:"the story moves behavior in fewer moments than we hope. So we de-risk before building: validate the acceptance driver in interviews, ship only to lean-in moments, and design the feature to make itself unnecessary.",options:{color:DARK}}],{x:0.48,y:4.82,w:9.05,h:0.34,fontFace:F,fontSize:8.5,valign:"middle",margin:0,lineSpacingMultiple:1.0});
-crumb(s,9);
+crumb(s,8);
 
 p.writeFile({fileName:"spotify_deck_v2.pptx"}).then(f=>console.log("WROTE",f));
