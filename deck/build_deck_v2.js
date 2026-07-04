@@ -7,7 +7,7 @@ p.author = "Arjun"; p.title = "Off Repeat — Spotify Discovery (Top-Fellow form
 const BG="FAF6EF", BAR="0E6B37", GREEN="1DB954", DARK="17241D", MUTE="5C6B62";
 const GT="E7F6EC", BT="E6EFF7", PT="FBE3DD", AT="FCF3D9", WHITE="FFFFFF", LINE="D8E5DC", DARKCARD="14110F";
 const F="Arial";
-const SECTIONS=["Market","Context","Research","Persona","Journey","Problem","Solution","MVP","Flow & Edge","Metrics & Risks"];
+const SECTIONS=["Market","Context","Research","Persona","Journey","Problem","Solution","MVP","Architecture","Metrics & Risks"];
 const sh=()=>({type:"outer",color:"6B6B6B",blur:7,offset:2,angle:90,opacity:0.22});
 
 function head(s, txt){
@@ -209,19 +209,37 @@ mock.forEach((m,i)=>{const y=1.6+i*1.08; s.addShape(p.shapes.ROUNDED_RECTANGLE,{
   s.addText(m[3],{x:4.45,y:y+0.76,w:4.85,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:m[4],margin:0});});
 crumb(s,7);
 
-// ============ S9 — FLOW & EDGE CASES ============
-s=p.addSlide(); head(s,"From a stale feed to a song you'll actually try.");
-kicker(s,0.3,1.02,4.6,"System & data flow");
-const flow=[["1 · Taste profile","embed listening history + saves"],["2 · Candidate retrieval","semantic match → fresh, long-tail tracks"],["3 · Novelty filter","drop anything already in the library"],["4 · Grounded narrative","LLM writes the 'why', grounded in real artist facts"],["5 · Serve + learn","trust badge + story; learns what you adopt"]];
-flow.forEach((f,i)=>{const y=1.32+i*0.66; card(s,0.3,y,4.6,0.58,i===3?GT:WHITE);
-  s.addText(f[0],{x:0.45,y:y+0.06,w:4.3,h:0.26,fontFace:F,fontSize:11,bold:true,color:i===3?BAR:DARK,margin:0});
-  s.addText(f[1],{x:0.45,y:y+0.31,w:4.3,h:0.24,fontFace:F,fontSize:9,color:MUTE,margin:0});});
-kicker(s,5.1,1.02,4.6,"Where it holds up under pressure",BAR);
-const edge=[["Hallucinated facts","A trust feature can't lie → every story is grounded in a real artist-data source (RAG). Same no-fabrication guardrail as the engine."],["Cold start (no friends/history)","The AI story always works alone; taste-twin fills in; social is a bonus, never required."],["Story fatigue","Lean-in moments only. Default = one glanceable line; full story on tap. Silent in background listening."]];
-edge.forEach((e,i)=>{const y=1.32+i*1.18; card(s,5.1,y,4.6,1.06,PT);
-  s.addText(e[0],{x:5.27,y:y+0.08,w:4.26,h:0.28,fontFace:F,fontSize:11,bold:true,color:DARK,margin:0});
-  s.addText(e[1],{x:5.27,y:y+0.36,w:4.26,h:0.66,fontFace:F,fontSize:9.5,color:DARK,margin:0,lineSpacingMultiple:1.08});});
-s.addText("The moat is the user's adoption profile — it compounds and can't be copied.",{x:0.3,y:4.7,w:4.6,h:0.4,fontFace:F,fontSize:9.5,bold:true,italic:true,color:BAR,margin:0,lineSpacingMultiple:1.05});
+// ============ S9 — FULL ARCHITECTURE ============
+s=p.addSlide(); head(s,"One grounded engine, twice — to find the problem, then fix it.");
+function anode(x,y,w,h,title,desc,fill,tcolor){
+  s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w,h,rectRadius:0.06,fill:{color:fill},line:{color:LINE,width:1},shadow:sh()});
+  s.addText(title,{x:x+0.06,y:y+0.06,w:w-0.12,h:0.28,fontFace:F,fontSize:9.5,bold:true,color:tcolor,align:"center",valign:"middle",margin:0,lineSpacingMultiple:0.9});
+  s.addText(desc,{x:x+0.06,y:y+0.33,w:w-0.12,h:h-0.38,fontFace:F,fontSize:7.5,color:MUTE,align:"center",margin:0,lineSpacingMultiple:1.0});
+}
+function arrow(x,y){ s.addText("→",{x,y,w:0.22,h:0.4,fontFace:F,fontSize:15,bold:true,color:"9AA6A0",align:"center",valign:"middle",margin:0}); }
+// Row A — AI Review Engine
+kicker(s,0.3,1.0,9.4,"① AI Review Engine — how we found the problem (research at scale)",BAR);
+const A=[["Collect","App Store · Play Store\nYouTube · Community\n7,296 reviews","E7F6EC",DARK],
+["Label","per-review LLM\ncoding (Groq)","E7F6EC",DARK],
+["Embed + retrieve","MiniLM 384-d\nsemantic search","E7F6EC",DARK],
+["Synthesize","grounded, cited\nQ&A · no fabrication","E7F6EC",DARK],
+["💡 Insight","#1 pain = stale/repeat\n→ gap is ACCEPTANCE","CFEAD8",BAR]];
+A.forEach((n,i)=>{const x=0.3+i*1.925; anode(x,1.34,1.7,0.86,n[0],n[1],n[2],n[3]); if(i<4) arrow(x+1.72,1.56);});
+// bridge
+s.addText("▼  the finding is the product spec",{x:0.3,y:2.3,w:9.4,h:0.26,fontFace:F,fontSize:10,bold:true,italic:true,color:BAR,align:"center",margin:0});
+// Row B — Off Repeat MVP
+kicker(s,0.3,2.6,9.4,"② Off Repeat MVP — how we act on it (live, per user)",BAR);
+const B=[["Signals","listening history\nsaves · friends","E6EFF7",DARK],
+["Taste vector","embed what\nyou love","E6EFF7",DARK],
+["Retrieve + filter","novel, long-tail\ndrop the known","E6EFF7",DARK],
+["Grounded story + trust","LLM writes the 'why' (RAG)\nfriend · twin · AI","E6EFF7",DARK],
+["Serve + learn ↻","Spotify UI · learns\nwhat you adopt","C7DBFF",BAR]];
+B.forEach((n,i)=>{const x=0.3+i*1.925; anode(x,2.94,1.7,0.86,n[0],n[1],n[2],n[3]); if(i<4) arrow(x+1.72,3.16);});
+// shared backbone bar
+s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:0.3,y:4.02,w:9.4,h:0.6,rectRadius:0.06,fill:{color:"14110F"},shadow:sh()});
+s.addText([{text:"Shared backbone   ",options:{bold:true,color:"7DE0A0"}},{text:"grounded generative AI · no-fabrication guardrail (RAG over real facts) · Groq LLM + sentence-transformer embeddings — the rigor that made the research trustworthy makes the feature trustworthy.",options:{color:"ECECEC"}}],{x:0.5,y:4.08,w:9.0,h:0.48,fontFace:F,fontSize:9,align:"center",valign:"middle",margin:0,lineSpacingMultiple:1.02});
+// edge/guardrail micro-note
+s.addText("Edge cases handled — hallucination → RAG grounding · cold-start → AI story works alone · story fatigue → one glanceable line, full story on tap.",{x:0.3,y:4.72,w:9.4,h:0.28,fontFace:F,fontSize:8,italic:true,color:MUTE,align:"center",margin:0});
 crumb(s,8);
 
 // ============ S10 — METRICS & RISKS ============
