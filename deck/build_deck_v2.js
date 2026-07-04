@@ -29,6 +29,19 @@ function kicker(s,x,y,w,txt,color=BAR){ s.addText(txt.toUpperCase(),{x,y,w,h:0.2
 function rich(s,x,y,w,h,runs,fs=11,ls=1.08){ s.addText(runs,{x,y,w,h,fontFace:F,fontSize:fs,margin:0,lineSpacingMultiple:ls}); }
 function bodyText(s,x,y,w,h,t,fs=11,color=DARK,ls=1.08){ s.addText(t,{x,y,w,h,fontFace:F,fontSize:fs,color,margin:0,lineSpacingMultiple:ls}); }
 
+// ============ S0 — COVER ============
+{ const c=p.addSlide(); c.background={color:BAR};
+  c.addShape(p.shapes.OVAL,{x:0.6,y:0.62,w:0.5,h:0.5,fill:{color:GREEN}});
+  c.addText("✦",{x:0.6,y:0.6,w:0.5,h:0.5,fontFace:F,fontSize:22,bold:true,color:"03240F",align:"center",valign:"middle",margin:0});
+  c.addText("NEXTLEAP PM FELLOWSHIP   ·   SPOTIFY · GROWTH TEAM",{x:1.25,y:0.7,w:8.2,h:0.35,fontFace:F,fontSize:11,bold:true,color:"BFE9CD",charSpacing:2,valign:"middle",margin:0});
+  c.addText("Off Repeat",{x:0.58,y:1.55,w:9,h:1.1,fontFace:F,fontSize:54,bold:true,color:WHITE,margin:0});
+  c.addShape(p.shapes.RECTANGLE,{x:0.64,y:2.72,w:2.6,h:0.07,fill:{color:GREEN}});
+  c.addText("Spotify perfected recommendation. Discovery still stalls — because the gap was never accuracy. It's acceptance: a reason to press play on the unfamiliar.",{x:0.62,y:3.0,w:8.7,h:1.0,fontFace:F,fontSize:16,color:"F2FBF5",margin:0,lineSpacingMultiple:1.2});
+  c.addText("You have On Repeat. Meet Off Repeat.",{x:0.62,y:4.05,w:8.7,h:0.4,fontFace:F,fontSize:14,bold:true,italic:true,color:"7DE0A0",margin:0});
+  c.addText([{text:"▶ Live prototype + AI workflow   ·   ",options:{bold:true}},{text:"github.com/arjuncooliitr/spotify-discovery-engine",options:{}}],{x:0.62,y:4.72,w:8.8,h:0.3,fontFace:F,fontSize:10.5,color:WHITE,margin:0});
+  c.addText("Figures: Spotify reported MAU / Premium; repeat-listening & genre-diversity from published personalization research. Reviews: 7,296 analyzed via an AI review engine.",{x:0.62,y:5.08,w:8.8,h:0.35,fontFace:F,fontSize:7.5,color:"9CC7AC",margin:0,lineSpacingMultiple:1.0});
+}
+
 // ============ S1 — MARKET ============
 let s=p.addSlide(); head(s,"Spotify perfected recommendation. Discovery still stalls.");
 const stats=[["~675M","monthly active users (reported)",GT],["263M","Premium subscribers",GT],["~30%","of listening is repeat / familiar",PT],["−12%","genre diversity in 6 mo · Discover Weekly (research)",PT]];
@@ -175,8 +188,8 @@ crumb(s,6);
 
 // ============ S8 — MVP ============
 s=p.addSlide(); head(s,"You have On Repeat. Meet Off Repeat.");
-bodyText(s,0.3,1.05,3.5,1.1,"Off Repeat is the friend who puts you on — an AI that introduces unfamiliar music with a short, personalized story, so engaged users actually press play. Trust scales in three layers:",12,DARK,1.15);
-const ly=[["❤  Real friend","“Liked by Priya” — strongest trust",GREEN],["◑  AI taste-twin","“Loved by listeners just like you”","2C7BE5"],["✎  AI story","always — works with zero friends","8A5CD1"]];
+bodyText(s,0.3,1.05,3.5,1.25,"Off Repeat is the friend who puts you on. Generative AI writes a unique, grounded reason to press play for every track — impossible to template or hand-author at scale. Recommendation picks the song; AI earns the play. Trust scales in three layers:",11,DARK,1.14);
+const ly=[["❤  Real friend","“Liked by Nitya” — strongest trust",GREEN],["◑  AI taste-twin","“Popular with your taste”","2C7BE5"],["✎  AI story","always — works with zero friends","8A5CD1"]];
 ly.forEach((l,i)=>{const y=2.3+i*0.62; card(s,0.3,y,3.5,0.52,WHITE);
   s.addText(l[0],{x:0.45,y:y+0.05,w:3.2,h:0.26,fontFace:F,fontSize:11,bold:true,color:l[2],margin:0});
   s.addText(l[1],{x:0.45,y:y+0.29,w:3.2,h:0.22,fontFace:F,fontSize:9,color:MUTE,margin:0});});
@@ -184,9 +197,9 @@ s.addText([{text:"▶ Live prototype + workflow",options:{bold:true,breakLine:tr
 // dark mock card (real generated example)
 s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:4.05,y:1.05,w:5.65,h:3.95,rectRadius:0.1,fill:{color:DARKCARD},shadow:sh()});
 s.addText("🎧 Off Repeat — for someone who loves Tame Impala + lo-fi",{x:4.3,y:1.2,w:5.2,h:0.3,fontFace:F,fontSize:11,bold:true,color:WHITE,margin:0});
-const mock=[["Crumb — “Locket”","psych-pop · Brooklyn","the woozy basslines you love in Tame Impala — from a scene you've never played.","❤  Liked by Rahul · your friend",GREEN],
-["The Babe Rainbow — “Funny Lookin'”","neo-psych · Australia","same psych lineage as Tame Impala, but obscure — under 50k listeners.","👥  Loved by listeners just like you","6FB0FF"],
-["Mndsgn — “Sunset Drift”","chillwave · California","lush synths, a laid-back groove — Tame Impala's spirit at golden hour.","✍  AI pick for your taste","C9A8FF"]];
+const mock=[["Crumb — “Locket”","psych-pop · Brooklyn","the woozy Tame-Impala basslines you love — from a Brooklyn band you've never played.","❤  Liked by Nitya · your friend",GREEN],
+["Mild High Club — “Homage”","psych-pop · Los Angeles","lush, jazzy psychedelia — that dreamy haze you love, at a Sunday tempo.","👥  Popular with your taste","6FB0FF"],
+["Men I Trust — “Show Me How”","indie · Montreal","the hushed lo-fi groove you keep on repeat — still way under the radar.","✦  Picked for you","C9A8FF"]];
 mock.forEach((m,i)=>{const y=1.6+i*1.08; s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:4.3,y:y,w:5.15,h:0.98,rectRadius:0.07,fill:{color:"201C1A"}});
   s.addText(m[0],{x:4.45,y:y+0.07,w:3.6,h:0.26,fontFace:F,fontSize:11,bold:true,color:WHITE,margin:0});
   s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:8.2,y:y+0.08,w:1.05,h:0.26,rectRadius:0.1,fill:{color:GREEN}});
@@ -222,10 +235,13 @@ cond.forEach((c,i)=>{const x=0.5+i*1.8; s.addShape(p.shapes.ROUNDED_RECTANGLE,{x
   s.addText(c[1],{x:x+0.05,y:2.2,w:1.58,h:0.22,fontFace:F,fontSize:8.5,color:MUTE,align:"center",margin:0});});
 // metric tree
 const mt=[["LEADING","Story-attach try-rate · A/B story vs none","Target +25%",BT],["BEHAVIORAL","New-artist save-rate · 7-day return","upward by M3",BT],["GUARDRAIL","Skip-rate · session time (protect core)","flat / down",AT]];
-mt.forEach((m,i)=>{const y=2.7+i*0.62; card(s,0.3,y,5.65,0.54,m[3]);
+mt.forEach((m,i)=>{const y=2.62+i*0.58; card(s,0.3,y,5.65,0.5,m[3]);
   s.addText(m[0],{x:0.45,y:y+0.05,w:1.5,h:0.44,fontFace:F,fontSize:9.5,bold:true,color:BAR,valign:"middle",margin:0});
   s.addText(m[1],{x:1.95,y:y+0.05,w:2.7,h:0.44,fontFace:F,fontSize:9,color:DARK,valign:"middle",margin:0,lineSpacingMultiple:1.0});
   s.addText(m[2],{x:4.7,y:y+0.05,w:1.1,h:0.44,fontFace:F,fontSize:9,bold:true,color:DARK,align:"right",valign:"middle",margin:0});});
+// phased rollout + strategic closer (left column, below metrics)
+bodyText(s,0.3,4.42,5.65,0.32,"Rollout — P1 (M0–3): shadow-test on 1% of Engaged Explorers · P2 (M3–6): 10% + guardrail gates · P3 (M6–12): all Premium if discovery-rate ↑ and skip-rate flat.",8.5,MUTE,1.05);
+s.addText("The loop becomes a launchpad — Off Repeat doesn't chase better recs, it earns the play.",{x:0.3,y:4.82,w:5.65,h:0.34,fontFace:F,fontSize:10,bold:true,italic:true,color:BAR,margin:0,lineSpacingMultiple:1.05});
 // risks
 card(s,6.15,1.05,3.55,3.95,PT);
 kicker(s,6.32,1.16,3.3,"Where it can fail · what we accept",BAR);
