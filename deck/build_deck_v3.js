@@ -72,10 +72,10 @@ foot(s,"If the gap is real, does it show in real Spotify reviews? Let's look →
 
 /* ================= S2 — RESEARCH ================= */
 s=slide();
-head(s,"We didn't survey 30 people — we analyzed 7,296 reviews; repetition is the #1 pain",
+head(s,"We analyzed 7,296 real reviews — repetition is the #1 discovery pain",
   "AI review engine across App Store · Play Store · YouTube · Spotify Community. Every claim cites a real review — no fabrication.");
 // 1 review findings
-db(s,0.25,0.9,3.15,3.3,DGRN); kick(s,0.4,0.98,2.9,"1 · Review findings (n=7,296)",DGRN);
+db(s,0.25,0.9,3.15,3.3,DGRN); kick(s,0.4,0.98,2.9,"1 · Review findings — 7,296 reviews",DGRN);
 const rf=[["7,296","reviews analyzed"],["1,147","LLM-labeled"],["19.4%","cite discovery pain"],["#1","theme = stale/repetitive"]];
 rf.forEach((r,i)=>{const x=0.4+(i%2)*1.5, y=1.26+Math.floor(i/2)*0.6; fb(s,x,y,1.42,0.52,GT);
   s.addText(r[0],{x,y:y+0.03,w:1.42,h:0.3,fontFace:F,fontSize:14,bold:true,color:DGRN,align:"center",margin:0});
@@ -263,7 +263,7 @@ foot(s,"System designed. Now success metrics, leading indicators & guardrails �
 /* ================= S9 — METRICS ================= */
 s=slide();
 head(s,"One North Star for the behavior shift, four indicators to prove it, guardrails to protect it",
-  "Every threshold derived from our review analysis (n=7,296) with secondary research woven in.");
+  "Every threshold derived from our analysis of 7,296 real reviews, with secondary research woven in.");
 db(s,0.25,0.9,9.5,1.02,DGRN);
 s.addText("★ North Star",{x:0.4,y:1.0,w:1.5,h:0.24,fontFace:F,fontSize:11,bold:true,color:DGRN,margin:0});
 s.addText("Meaningful Discovery Rate",{x:0.4,y:1.24,w:2.4,h:0.4,fontFace:F,fontSize:12,bold:true,color:INK,margin:0,lineSpacingMultiple:0.95});
@@ -287,7 +287,7 @@ s=slide();
 head(s,"Seven ways this could fail — and the guardrails to catch them",
   "Honest risk assessment with research-backed thresholds and specific mitigations.");
 kick(s,0.25,0.88,6.0,"Failure modes & mitigations",CORAL);
-const risk=[["Acceptance ≠ the real driver — 'won't play' is often mood/effort, not missing trust.","Validate the driver in Part-2 interviews; ship to lean-in surfaces only; measure by moment.","CRIT"],
+const risk=[["Acceptance ≠ the real driver — 'won't play' is often mood/effort, not missing trust.","Validate the driver with a targeted user test before building; ship to lean-in surfaces only.","CRIT"],
 ["Trust is fragile — one salesy or wrong story and users tune the layer out for good.","RAG grounding + no-fabrication guardrail; style variety; QA on samples.","CRIT"],
 ["Payola & gaming — pressure to inject promoted tracks; stream-farming the metric.","Firewall from promotion; reward saved+returned, never raw plays.","CRIT"],
 ["AI becomes a crutch — users stop exploring unaided; a new trust proxy.","Measure unaided exploration; ease off narration as adoption grows.","HIGH"],
@@ -307,6 +307,6 @@ gr.forEach((g,i)=>{const y=1.16+i*0.92; db(s,6.45,y,3.3,0.84,g[2]==="CRIT"?CORAL
   s.addText(g[0],{x:6.57,y:g[2]==="CRIT"?y+0.34:y+0.08,w:3.05,h:0.24,fontFace:F,fontSize:9,bold:true,color:DGRN,margin:0});
   tx(s,6.57,g[2]==="CRIT"?y+0.56:y+0.32,3.05,0.24,g[1],7.8,INK,1.0);});
 fb(s,0.25,5.28,9.5,0.3,PT);
-s.addText([{text:"Off Repeat doesn't eliminate the loop — ",options:{bold:true,color:CORAL}},{text:"it earns the play. The riskiest failures are the ones users don't notice, so we de-risk the acceptance driver in interviews before we build.",options:{color:INK}}],{x:0.4,y:5.27,w:9.2,h:0.31,fontFace:F,fontSize:8.5,valign:"middle",margin:0});
+s.addText([{text:"Off Repeat doesn't eliminate the loop — ",options:{bold:true,color:CORAL}},{text:"it earns the play. The riskiest failures are the ones users don't notice, so we de-risk the acceptance driver with a small user test before we build.",options:{color:INK}}],{x:0.4,y:5.27,w:9.2,h:0.31,fontFace:F,fontSize:8.5,valign:"middle",margin:0});
 
 p.writeFile({fileName:"off_repeat_deck_v3.pptx"}).then(f=>console.log("WROTE",f));
