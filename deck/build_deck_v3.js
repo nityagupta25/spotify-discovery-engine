@@ -5,10 +5,11 @@ p.layout = "LAYOUT_16x9"; // 10 x 5.625
 p.author = "Arjun"; p.title = "Off Repeat — Spotify Discovery (detailed)";
 
 const F="Arial";
-const INK="1A1A1A", DGRN="0E6B37", GRN="1DB954", CORAL="B23A2E", AMBER="9A6A08", BLU="2C5FA8", MUT="5C6B62", LINE="CFCFCF";
-const GT="EAF7EF", PT="FBEAE7", BT="EAF0FA", LAV="EFEAF7", AT="FBF3DE", WHITE="FFFFFF";
+const BG="121212", CARD="181818", CARD2="242424";
+const INK="E8E8E8", DGRN="1ED760", GRN="1ED760", HDRG="0E6B37", CORAL="FF7A7A", REDF="C0392B", AMBER="F5B83D", BLU="6FA8FF", MUT="9A9A9A", LINE="3A3A3A";
+const GT="13291D", PT="2E1719", BT="15202F", LAV="16281D", AT="2A2411", WHITE="FFFFFF";
 
-function slide(){ const s=p.addSlide(); s.background={color:WHITE}; return s; }
+function slide(){ const s=p.addSlide(); s.background={color:BG}; return s; }
 function head(s,title,sub){
   s.addShape(p.shapes.OVAL,{x:9.48,y:0.12,w:0.34,h:0.34,fill:{color:GRN}});
   s.addText("✦",{x:9.48,y:0.1,w:0.34,h:0.34,fontFace:F,fontSize:15,bold:true,color:"03240F",align:"center",valign:"middle",margin:0});
@@ -19,7 +20,7 @@ function foot(s,txt){
   s.addShape(p.shapes.ROUNDED_RECTANGLE,{x:0.25,y:5.28,w:9.5,h:0.3,rectRadius:0.05,fill:{color:LAV}});
   s.addText([{text:"▶▶  ",options:{bold:true,color:DGRN}},{text:txt,options:{italic:true,color:DGRN}}],{x:0.4,y:5.27,w:9.2,h:0.31,fontFace:F,fontSize:9.5,valign:"middle",margin:0});
 }
-function db(s,x,y,w,h,color){ s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w,h,rectRadius:0.06,fill:{color:WHITE},line:{color:color||DGRN,width:1.25,dashType:"dash"}}); }
+function db(s,x,y,w,h,color){ s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w,h,rectRadius:0.06,fill:{color:BG},line:{color:color||DGRN,width:1.25,dashType:"dash"}}); }
 function fb(s,x,y,w,h,fill){ s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w,h,rectRadius:0.06,fill:{color:fill},line:{color:LINE,width:0.5}}); }
 function kick(s,x,y,w,txt,color){ s.addText(txt.toUpperCase(),{x,y,w,h:0.24,fontFace:F,fontSize:9.5,bold:true,color:color||DGRN,charSpacing:0.8,margin:0}); }
 function tx(s,x,y,w,h,t,fs,color,ls){ s.addText(t,{x,y,w,h,fontFace:F,fontSize:fs||8.5,color:color||INK,margin:0,lineSpacingMultiple:ls||1.04}); }
@@ -27,7 +28,7 @@ function rtx(s,x,y,w,h,runs,fs,ls){ s.addText(runs,{x,y,w,h,fontFace:F,fontSize:
 function chip(s,x,y,w,txt,fill,color){ s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w,h:0.24,rectRadius:0.04,fill:{color:fill}}); s.addText(txt,{x,y,w,h:0.24,fontFace:F,fontSize:8,bold:true,color:color||WHITE,align:"center",valign:"middle",margin:0}); }
 function bar(s,x,y,wmax,frac,val,label,color){
   s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y,w:Math.max(0.18,wmax*frac),h:0.2,rectRadius:0.03,fill:{color:color||DGRN}});
-  s.addText(val,{x:x+0.04,y,w:0.7,h:0.2,fontFace:F,fontSize:8,bold:true,color:WHITE,valign:"middle",margin:0});
+  s.addText(val,{x:x+0.04,y,w:0.7,h:0.2,fontFace:F,fontSize:8,bold:true,color:"03240F",valign:"middle",margin:0});
   s.addText(label,{x:x+wmax+0.08,y,w:2.4,h:0.2,fontFace:F,fontSize:8.5,color:INK,valign:"middle",margin:0});
 }
 
@@ -42,9 +43,9 @@ const cg=[["Spotify","Best-in-class recsys — Discover Weekly, DJ, Daylist","No
 ["YouTube Music","Huge catalog + video","Recs echo history; weak long-tail"],
 ["Gaana","Deep regional / Bollywood","Chart & popularity-led discovery"],
 ["JioSaavn","Regional scale + podcasts","No personalized narrative"]];
-const trow=[[{text:"Platform",options:{bold:true,color:WHITE,fill:{color:DGRN}}},{text:"What they offer",options:{bold:true,color:WHITE,fill:{color:DGRN}}},{text:"What's missing",options:{bold:true,color:WHITE,fill:{color:CORAL}}}]]
+const trow=[[{text:"Platform",options:{bold:true,color:WHITE,fill:{color:HDRG}}},{text:"What they offer",options:{bold:true,color:WHITE,fill:{color:HDRG}}},{text:"What's missing",options:{bold:true,color:WHITE,fill:{color:REDF}}}]]
   .concat(cg.map((r,i)=>[{text:r[0],options:{bold:true,color:i===0?DGRN:INK}},{text:r[1],options:{color:INK}},{text:r[2],options:{bold:true,color:CORAL}}]));
-s.addTable(trow,{x:0.25,y:1.12,w:5.05,colW:[1.05,2.35,1.65],rowH:0.32,fontFace:F,fontSize:8,valign:"middle",border:{pt:0.5,color:LINE},align:"left",fill:{color:WHITE}});
+s.addTable(trow,{x:0.25,y:1.12,w:5.05,colW:[1.05,2.35,1.65],rowH:0.32,fontFace:F,fontSize:8,valign:"middle",border:{pt:0.5,color:LINE},align:"left",fill:{color:CARD}});
 s.addText("→ Even Spotify only serves the song — never a reason to try it.",{x:0.25,y:3.16,w:5.05,h:0.22,fontFace:F,fontSize:8.5,italic:true,bold:true,color:DGRN,margin:0});
 // why spotify first
 kick(s,5.5,0.86,4.2,"Why Spotify solves this first",DGRN);
@@ -85,7 +86,7 @@ s.addText("Source: labeled review sample (Groq)",{x:0.4,y:4.0,w:3.0,h:0.18,fontF
 // 2 sentiment
 db(s,3.5,0.9,2.85,3.3,AMBER); kick(s,3.65,0.98,2.6,"2 · Sentiment (from ★ ratings)",AMBER);
 const sent=[["1,933","Negative",CORAL],["627","Neutral",AMBER],["3,449","Positive",DGRN]];
-sent.forEach((c,i)=>{const y=1.3+i*0.62; fb(s,3.65,y,2.55,0.54,WHITE);
+sent.forEach((c,i)=>{const y=1.3+i*0.62; fb(s,3.65,y,2.55,0.54,CARD);
   s.addShape(p.shapes.OVAL,{x:3.75,y:y+0.15,w:0.24,h:0.24,fill:{color:c[2]}});
   s.addText(c[0],{x:4.1,y:y+0.05,w:1.0,h:0.44,fontFace:F,fontSize:15,bold:true,color:c[2],valign:"middle",margin:0});
   s.addText(c[1],{x:5.05,y:y+0.05,w:1.1,h:0.44,fontFace:F,fontSize:9,color:INK,valign:"middle",margin:0});});
@@ -126,7 +127,7 @@ per.forEach((c,i)=>{const x=0.25+i*4.8; db(s,x,1.34,4.6,1.86,DGRN);
 // journey
 kick(s,0.25,3.28,9.4,"User journey — what's hidden at every stage",DGRN);
 const jr=[["Open","wants something new","limited time; won't gamble it"],["Served","familiar-leaning picks","recsys optimizes replay, not novelty"],["Unfamiliar","a new track appears","no story, no trust signal"],["Skip","skips in ~5s","no reason to risk the listen"],["Loop","back to the same playlist","algo reads skip as 'dislike' → narrows"]];
-jr.forEach((j,i)=>{const x=0.25+i*1.92; const brk=i===3; fb(s,x,3.54,1.82,1.06,brk?PT:WHITE); if(!brk) s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y:3.54,w:1.82,h:1.06,rectRadius:0.05,fill:{type:"none"},line:{color:LINE,width:0.75}});
+jr.forEach((j,i)=>{const x=0.25+i*1.92; const brk=i===3; fb(s,x,3.54,1.82,1.06,brk?PT:CARD); if(!brk) s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y:3.54,w:1.82,h:1.06,rectRadius:0.05,fill:{type:"none"},line:{color:LINE,width:0.75}});
   s.addText((i+1)+" · "+j[0],{x:x+0.07,y:3.6,w:1.7,h:0.24,fontFace:F,fontSize:9.5,bold:true,color:brk?CORAL:DGRN,margin:0});
   s.addText(j[1],{x:x+0.08,y:3.86,w:1.68,h:0.3,fontFace:F,fontSize:8,color:INK,margin:0,lineSpacingMultiple:1.0});
   rtx(s,x+0.08,4.18,1.68,0.4,[{text:"Hidden: ",options:{bold:true,color:brk?CORAL:MUT}},{text:j[2],options:{italic:true,color:MUT}}],7.5,1.0);
@@ -179,11 +180,11 @@ let ry=3.44;
 rice.forEach((row,ri)=>{ s.addText(row[0],{x:0.25,y:ry,w:0.2,h:0.34,fontFace:F,fontSize:9,bold:true,color:DGRN,valign:"middle",margin:0});
   [0,1,2].forEach(ci=>{const x=0.5+ci*1.95; const col=[GRN,AMBER,BLU][ci]; const frac=row[1][ci]/10;
     s.addShape(p.shapes.ROUNDED_RECTANGLE,{x,y:ry+0.02,w:0.35+1.4*frac,h:0.16,rectRadius:0.02,fill:{color:col}});
-    s.addText(String(row[1][ci]),{x:x+0.03,y:ry+0.02,w:0.3,h:0.16,fontFace:F,fontSize:7.5,bold:true,color:WHITE,valign:"middle",margin:0});
+    s.addText(String(row[1][ci]),{x:x+0.03,y:ry+0.02,w:0.3,h:0.16,fontFace:F,fontSize:7.5,bold:true,color:"03240F",valign:"middle",margin:0});
     s.addText(row[2][ci],{x:x,y:ry+0.19,w:1.9,h:0.16,fontFace:F,fontSize:6.8,italic:true,color:MUT,margin:0});});
   ry+=0.37;});
 s.addText("Score",{x:0.25,y:ry,w:0.25,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:DGRN,margin:0});
-[["116",GRN],["60",AMBER],["7",BLU]].forEach((sc,ci)=>{const x=0.5+ci*1.95; chip(s,x,ry,0.7,sc[0],sc[1],WHITE);});
+[["116",GRN],["60",AMBER],["7",BLU]].forEach((sc,ci)=>{const x=0.5+ci*1.95; chip(s,x,ry,0.7,sc[0],sc[1],"111111");});
 // verdict
 db(s,6.5,3.24,3.25,1.78,GRN);
 s.addText("🏆  H1 wins by ~2× over H2 and ~16× over H3.",{x:6.65,y:3.34,w:2.95,h:0.4,fontFace:F,fontSize:10,bold:true,color:DGRN,margin:0,lineSpacingMultiple:1.0});
@@ -199,7 +200,7 @@ const sol=[["S1 · Prompted discovery","REJECTED","Tell discovery what you want 
 ["S3 · Facts & credits","REJECTED","Show song facts / credits (SongDNA-style).","Facts ≠ a reason to care; no personal 'why this, for you' — it informs, it doesn't persuade.","“…isn't shuffle.” — App Store #4896"]];
 sol.forEach((c,i)=>{const x=0.25+i*3.19; db(s,x,0.9,3.05,1.86,CORAL);
   s.addText(c[0],{x:x+0.12,y:0.97,w:2.15,h:0.24,fontFace:F,fontSize:10,bold:true,color:INK,margin:0});
-  chip(s,x+2.3,0.97,0.65,c[1],CORAL,WHITE);
+  chip(s,x+2.3,0.97,0.65,c[1],REDF,WHITE);
   tx(s,x+0.12,1.26,2.8,0.34,c[2],8.5,INK,1.02);
   tx(s,x+0.12,1.62,2.8,0.72,"✗ "+c[3],8.5,CORAL,1.05);
   s.addText(c[4],{x:x+0.12,y:2.4,w:2.8,h:0.3,fontFace:F,fontSize:8,italic:true,color:MUT,margin:0,lineSpacingMultiple:1.0});});
@@ -292,9 +293,9 @@ const risk=[["Acceptance ≠ the real driver — 'won't play' is often mood/effo
 ["AI becomes a crutch — users stop exploring unaided; a new trust proxy.","Measure unaided exploration; ease off narration as adoption grows.","HIGH"],
 ["Novelty decay — the first-try lift fades once the story feels normal.","Track 30/90-day adoption retention; refresh story styles.","HIGH"],
 ["Cold-start / long tail — thin metadata where obscure tracks matter most.","Confidence-gate; safe fallback cues; enrich long-tail data.","HIGH"]];
-const rr=[[{text:"What could go wrong",options:{bold:true,color:WHITE,fill:{color:CORAL}}},{text:"How it's handled",options:{bold:true,color:WHITE,fill:{color:DGRN}}},{text:"Sev",options:{bold:true,color:WHITE,fill:{color:INK}}}]]
+const rr=[[{text:"What could go wrong",options:{bold:true,color:WHITE,fill:{color:REDF}}},{text:"How it's handled",options:{bold:true,color:WHITE,fill:{color:HDRG}}},{text:"Sev",options:{bold:true,color:WHITE,fill:{color:"333333"}}}]]
  .concat(risk.map(r=>[{text:r[0],options:{color:INK}},{text:r[1],options:{color:INK}},{text:r[2],options:{bold:true,color:r[2]==="CRIT"?CORAL:AMBER,align:"center"}}]));
-s.addTable(rr,{x:0.25,y:1.14,w:6.0,colW:[2.95,2.5,0.55],rowH:0.5,fontFace:F,fontSize:7.8,valign:"middle",border:{pt:0.5,color:LINE},align:"left",fill:{color:WHITE}});
+s.addTable(rr,{x:0.25,y:1.14,w:6.0,colW:[2.95,2.5,0.55],rowH:0.5,fontFace:F,fontSize:7.8,valign:"middle",border:{pt:0.5,color:LINE},align:"left",fill:{color:CARD}});
 // guardrails
 kick(s,6.45,0.88,3.3,"Guardrails",DGRN);
 const gr=[["< 3% false 'why' (hallucination)","the highest-risk failure — strictest threshold; drop invented claims.","CRIT"],
@@ -302,7 +303,7 @@ const gr=[["< 3% false 'why' (hallucination)","the highest-risk failure — stri
 ["Unaided-exploration not falling","proof we're not creating a crutch."," "],
 ["Reward saved + returned, not plays","kills stream-farming incentives at the metric level."," "]];
 gr.forEach((g,i)=>{const y=1.16+i*0.92; db(s,6.45,y,3.3,0.84,g[2]==="CRIT"?CORAL:DGRN);
-  if(g[2]==="CRIT") chip(s,6.57,y+0.08,0.7,"CRITICAL",CORAL,WHITE);
+  if(g[2]==="CRIT") chip(s,6.57,y+0.08,0.7,"CRITICAL",REDF,WHITE);
   s.addText(g[0],{x:6.57,y:g[2]==="CRIT"?y+0.34:y+0.08,w:3.05,h:0.24,fontFace:F,fontSize:9,bold:true,color:DGRN,margin:0});
   tx(s,6.57,g[2]==="CRIT"?y+0.56:y+0.32,3.05,0.24,g[1],7.8,INK,1.0);});
 fb(s,0.25,5.28,9.5,0.3,PT);
