@@ -600,6 +600,7 @@ st.markdown("## ✦ Off Repeat — generated live, for *you*")
 st.caption("Pick your taste → the songs, the stories, and who-it's-for are all "
            "generated fresh. Stories are written live by the LLM and grounded in "
            "real tracks. Nothing here is hardcoded.")
+st.caption("✅ build: real-stories-v2 — if you see this line, the latest version is live.")
 
 with st.sidebar:
     st.header("Your taste")
