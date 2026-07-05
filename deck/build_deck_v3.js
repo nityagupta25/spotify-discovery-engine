@@ -56,7 +56,7 @@ why.forEach((w,i)=>{const y=1.14+i*0.66; db(s,5.5,y,4.25,0.58,DGRN);
   s.addText(w[0],{x:5.62,y:y+0.05,w:4.0,h:0.24,fontFace:F,fontSize:9.5,bold:true,color:DGRN,margin:0});
   s.addText(w[1],{x:5.62,y:y+0.29,w:4.05,h:0.26,fontFace:F,fontSize:8.5,color:INK,margin:0,lineSpacingMultiple:1.0});});
 // stats row
-const st=[["~30%","of listening is repeat / familiar","↑"],["−12%","genre diversity in 6 mo · Discover Weekly (research)","↓"],["19.4%","of analyzed reviews cite repetition / discovery pain","•"]];
+const st=[["~30%","of listening is repeat / familiar","↑"],["−12%","genre diversity in 6 mo · Discover Weekly (research)","↓"],["63","reviews say recs feel 'stale / looping'","•"]];
 st.forEach((c,i)=>{const x=0.25+i*1.72; fb(s,x,3.5,1.62,0.72,GT);
   s.addText(c[0],{x,y:3.55,w:1.62,h:0.34,fontFace:F,fontSize:18,bold:true,color:DGRN,align:"center",margin:0});
   s.addText(c[1],{x:x+0.06,y:3.9,w:1.5,h:0.3,fontFace:F,fontSize:7,color:MUT,align:"center",margin:0,lineSpacingMultiple:0.95});});
@@ -72,16 +72,16 @@ foot(s,"If the gap is real, does it show in real Spotify reviews? Let's look →
 
 /* ================= S2 — RESEARCH ================= */
 s=slide();
-head(s,"We analyzed 7,296 real reviews — repetition is the #1 discovery pain",
+head(s,"AI-coded 7,296 reviews: discovery is praised for accuracy, panned for the loop",
   "AI review engine across App Store · Play Store · YouTube · Spotify Community. Every claim cites a real review — no fabrication.");
 // 1 review findings
 db(s,0.25,0.9,3.15,3.3,DGRN); kick(s,0.4,0.98,2.9,"1 · Review findings — 7,296 reviews",DGRN);
-const rf=[["7,296","reviews analyzed"],["1,147","LLM-labeled"],["19.4%","cite discovery pain"],["#1","theme = stale/repetitive"]];
+const rf=[["7,296","reviews analyzed"],["1,147","AI-labeled"],["130","flag discovery · 3rd theme"],["63","say 'stale / looping'"]];
 rf.forEach((r,i)=>{const x=0.4+(i%2)*1.5, y=1.26+Math.floor(i/2)*0.6; fb(s,x,y,1.42,0.52,GT);
   s.addText(r[0],{x,y:y+0.03,w:1.42,h:0.3,fontFace:F,fontSize:14,bold:true,color:DGRN,align:"center",margin:0});
   s.addText(r[1],{x:x+0.04,y:y+0.32,w:1.34,h:0.2,fontFace:F,fontSize:7,color:MUT,align:"center",margin:0});});
-s.addText("What reviewers ask for",{x:0.4,y:2.52,w:2.9,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:INK,margin:0});
-[["41%","More variety",0.41],["33%","Less repetition",0.33],["17%","A real shuffle",0.17],["9%","Better new-music",0.09]].forEach((b,i)=>{bar(s,0.4,2.76+i*0.3,1.1,b[2],b[0],b[1],DGRN);});
+s.addText("Inside the 130 discovery mentions",{x:0.4,y:2.52,w:2.9,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:INK,margin:0});
+[["90","Praise it (accurate)",1.0],["63","Stale / looping",0.70],["14","Niche underserved",0.16],["5","Search / steer gaps",0.06]].forEach((b,i)=>{bar(s,0.4,2.76+i*0.3,1.1,b[2],b[0],b[1],DGRN);});
 s.addText("Source: labeled review sample (Groq)",{x:0.4,y:4.0,w:3.0,h:0.18,fontFace:F,fontSize:7,italic:true,color:BLU,margin:0});
 // 2 sentiment
 db(s,3.5,0.9,2.85,3.3,AMBER); kick(s,3.65,0.98,2.6,"2 · Sentiment (from ★ ratings)",AMBER);
@@ -113,7 +113,7 @@ head(s,"Engaged Explorers want new music — they just won't gamble a skip on it
   "Target: high-tenure Premium power users doing active discovery — the loudest, most-articulate discovery complaints in the reviews.");
 fb(s,0.25,0.86,9.5,0.42,LAV);
 rtx(s,0.4,0.88,9.25,0.38,[{text:"Why this segment:  ",options:{bold:true,color:DGRN}},
- {text:"highest LTV, feel the pain most, and are the most articulate — they drive the discovery complaints (19.4% of reviews). Win them, then expand to all Premium.",options:{color:INK}}],9,1.0);
+ {text:"highest LTV, feel the pain most, and are the most articulate — they drive the 'stale / looping' complaints — the top discovery pain in the reviews. Win them, then expand to all Premium.",options:{color:INK}}],9,1.0);
 // personas
 const per=[["Aarav, 27 · Bengaluru","“The Looper” — Premium 4 yrs, 15 hrs/wk, 2,000+ saves","Trusts his own saves; skeptical of algorithmic 'new'.","A reason to believe a new track fits before he risks a listen.","Opens Discover Weekly, skims, retreats to the same 6 playlists.","“everything it shows me, I've basically already heard.”  — reviewer"],
 ["Priya, 24 · Mumbai","“The Curator” — Premium 3 yrs, shares constantly","Trusts friends & scenes, not black-box recs.","To know WHO and WHY behind a pick.","Only tries music friends share; ignores algo recs entirely.","“if a friend puts me on, I'll try almost anything.”  — reviewer"]];
@@ -147,7 +147,7 @@ fb(s,3.6,1.72,2.78,0.48,GT); tx(s,3.68,1.76,2.64,0.42,"Persona 1 · The Looper �
 fb(s,3.6,2.24,2.78,0.48,GT); tx(s,3.68,2.28,2.64,0.42,"Persona 2 · The Curator — trusts friends, ignores black-box recs.",8,INK,1.0);
 s.addText("Largest, highest-LTV, most-articulate discovery cohort.",{x:3.6,y:2.75,w:2.78,h:0.13,fontFace:F,fontSize:7.5,italic:true,color:MUT,margin:0});
 db(s,6.65,0.9,3.1,2.0,BLU); kick(s,6.8,0.98,2.85,"3 · How do we know it's a problem?",BLU);
-[["Reviews","19.4% cite repetition; #1 theme"],["Sentiment","discovery skews negative"],["Verbatim","Community #6077 / #6072"],["Secondary","diversity drops on Discover Weekly"],["Market","no rival shows a 'why'"]].forEach((r,i)=>{const y=1.24+i*0.32; rtx(s,6.8,y,2.85,0.3,[{text:r[0]+": ",options:{bold:true,color:BLU}},{text:r[1],options:{color:INK}}],8,1.0);});
+[["Reviews","130 flag discovery; 63 'stale/looping'"],["Sentiment","discovery skews negative"],["Verbatim","Community #6077 / #6072"],["Secondary","diversity drops on Discover Weekly"],["Market","no rival shows a 'why'"]].forEach((r,i)=>{const y=1.24+i*0.32; rtx(s,6.8,y,2.85,0.3,[{text:r[0]+": ",options:{bold:true,color:BLU}},{text:r[1],options:{color:INK}}],8,1.0);});
 db(s,0.25,3.0,5.05,2.02,DGRN); kick(s,0.4,3.08,4.8,"4 · Value generated by solving this",DGRN);
 s.addText("For Engaged Explorers",{x:0.4,y:3.34,w:2.3,h:0.2,fontFace:F,fontSize:8.5,bold:true,color:INK,margin:0});
 tx(s,0.4,3.56,2.3,1.3,"Hear genuinely new music they'll love — without gambling a skip. Discovery becomes trustworthy, not a risk. The bubble finally widens.",8.5,INK,1.1);
@@ -254,7 +254,7 @@ kick(s,0.25,3.86,4.6,"Behavioral nudges built in",AMBER);
 [["Break-the-loop card","the first pick bridges from the familiar loop"],["One-line story default","glanceable; full story on tap — no fatigue"],["Save-all + 'Weirder'","low-friction commitment + deeper exploration"]].forEach((r,i)=>{const y=4.12+i*0.36; rtx(s,0.25,y,4.6,0.34,[{text:"• "+r[0]+" — ",options:{bold:true,color:INK}},{text:r[1],options:{color:MUT}}],8,1.0);});
 // right: why each component + edge cases
 kick(s,5.0,0.88,4.75,"Why each component exists — traced to reviews",DGRN);
-const wc=[["Grounded story","review #1 pain = repetition; users want a reason, not a score"],["Trust layer","reviewers trust friends & 'people like me', not black-box recs"],["Novelty filter","'same 30 songs' (#4896) → must be genuinely new to you"],["No-fabrication guardrail","a trust feature can't lie → RAG over real artist facts"]];
+const wc=[["Grounded story","top discovery gripe = 'stale/looping'; users want a reason, not a score"],["Trust layer","reviewers trust friends & 'people like me', not black-box recs"],["Novelty filter","'same 30 songs' (#4896) → must be genuinely new to you"],["No-fabrication guardrail","a trust feature can't lie → RAG over real artist facts"]];
 wc.forEach((r,i)=>{const y=1.14+i*0.52; rtx(s,5.0,y,4.75,0.5,[{text:r[0]+":  ",options:{bold:true,color:DGRN}},{text:r[1],options:{italic:true,color:INK}}],8.5,1.02);});
 db(s,5.0,3.28,4.75,1.74,CORAL); kick(s,5.15,3.36,4.5,"Edge cases handled",CORAL);
 [["E1 Background listening","Off Repeat is opt-in / lean-in only — never interrupts passive play."],["E2 Cold start","AI story works alone; taste-twin fills in; friend is a bonus."],["E3 Thin long-tail data","confidence-gate; fall back to safe cues; never invent facts."],["E4 Latency/cost at scale","cache per taste; batch; live gen for high-intent surfaces only."]].forEach((r,i)=>{const y=3.62+i*0.35; rtx(s,5.15,y,4.5,0.33,[{text:r[0]+": ",options:{bold:true,color:CORAL}},{text:r[1],options:{color:INK}}],7.8,1.0);});
