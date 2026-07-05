@@ -61,7 +61,7 @@ st.forEach((c,i)=>{const x=0.25+i*1.72; fb(s,x,3.5,1.62,0.72,GT);
   s.addText(c[0],{x,y:3.55,w:1.62,h:0.34,fontFace:F,fontSize:18,bold:true,color:DGRN,align:"center",margin:0});
   s.addText(c[1],{x:x+0.06,y:3.9,w:1.5,h:0.3,fontFace:F,fontSize:7,color:MUT,align:"center",margin:0,lineSpacingMultiple:0.95});});
 db(s,5.35,3.5,4.4,0.72,BLU);
-s.addText([{text:"Research:  ",options:{bold:true,color:BLU}},{text:"narrative 'transportation' raises willingness to try the unfamiliar — a story, not a score, drives acceptance (taste-broadening serendipity, 2024).",options:{italic:true,color:INK}}],{x:5.48,y:3.55,w:4.15,h:0.62,fontFace:F,fontSize:8.5,valign:"middle",margin:0,lineSpacingMultiple:1.03});
+s.addText([{text:"Research:  ",options:{bold:true,color:BLU}},{text:"narrative 'transportation' (Green & Brock, 2000) shows a story — not a score — makes people more open to the unfamiliar.",options:{italic:true,color:INK}}],{x:5.48,y:3.55,w:4.15,h:0.62,fontFace:F,fontSize:8.5,valign:"middle",margin:0,lineSpacingMultiple:1.03});
 // problem / business / product
 const bpp=[["PROBLEM STATEMENT",CORAL,"Spotify serves new music, but engaged users won't act on it — the unfamiliar arrives with no reason to trust it, so they skip back to the loop."],
 ["BUSINESS OUTCOME",DGRN,"Repetition → boredom → churn risk for the highest-LTV cohort. Discovery drives catalog breadth, the artist economy, and retention."],
