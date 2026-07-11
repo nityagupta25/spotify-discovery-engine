@@ -137,7 +137,10 @@ def build_retriever(texts):
             return "semantic (MiniLM embeddings)", search
         except Exception:
             pass
-    vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 2), min_df=2, max_df=0.6)
+    # Unigrams + capped vocabulary keep the sparse matrix small so scikit-learn/
+    # scipy don't spike memory (a segfault risk on some cloud Python builds).
+    vec = TfidfVectorizer(stop_words="english", ngram_range=(1, 1), min_df=3,
+                          max_df=0.6, max_features=20000)
     mat = vec.fit_transform(texts)
 
     def search(q, k):
@@ -189,13 +192,13 @@ with tabs[0]:
                      color="Sentiment",
                      color_discrete_map={"positive": "#1DB954", "neutral": "#888",
                                          "negative": "#E22134"})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     with b:
         st.subheader("Where the reviews come from")
         src = ins["meta"]["sources"]
         sdf2 = pd.DataFrame({"Source": list(src.keys()), "Reviews": list(src.values())})
         st.plotly_chart(px.bar(sdf2, x="Source", y="Reviews", color="Source"),
-                        use_container_width=True)
+                        width="stretch")
 
 # ============================================================================
 # TAB 2 — THE 6 QUESTIONS
@@ -227,7 +230,7 @@ with tabs[2]:
         scdf = pd.DataFrame({"Sub-theme": list(sc.keys()), "Count": list(sc.values())}).sort_values("Count")
         st.plotly_chart(px.bar(scdf, x="Count", y="Sub-theme", orientation="h",
                                color="Count", color_continuous_scale="Greens"),
-                        use_container_width=True)
+                        width="stretch")
         st.success("**Headline:** discovery *works* for a large share of users (praise is the most "
                    "common label). When it fails, the dominant complaint is **stale / repetitive "
                    "recommendations**, followed by weak genre/niche fit. 'Overwhelmed by too much "
@@ -251,7 +254,7 @@ with tabs[3]:
     cols = st.columns(len(examples))
     picked = None
     for i, ex in enumerate(examples):
-        if cols[i].button(ex, use_container_width=True):
+        if cols[i].button(ex, width="stretch"):
             picked = ex
     query = st.text_input("Your question:", value=picked or "",
                           placeholder="e.g. Why do users get stuck listening to the same songs?")
@@ -329,4 +332,4 @@ with tabs[4]:
         view = view[view["rating"] <= 2]
     st.caption(f"{len(view):,} reviews match")
     st.dataframe(view[["review_id", "source", "rating", "text"]].head(300),
-                 use_container_width=True, height=500)
+                 width="stretch", height=500)
