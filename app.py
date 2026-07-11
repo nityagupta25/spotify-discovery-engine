@@ -150,7 +150,12 @@ def build_retriever(texts):
     return "lexical (TF-IDF)", search
 
 clean, lab, ins, TEXT_BY_ID, META_BY_ID = load()
-RETRIEVER_MODE, SEARCH = build_retriever(clean["text"].astype(str).tolist())
+
+@st.cache_resource
+def get_retriever():
+    """Built lazily (and cached) on the FIRST search, so page load never runs the
+    heavy scipy/scikit-learn TF-IDF fit — that eager build was crashing the app."""
+    return build_retriever(clean["text"].astype(str).tolist())
 
 def full_review(rid):
     return TEXT_BY_ID.get(rid, "(review not found)")
@@ -244,8 +249,9 @@ with tabs[3]:
     st.caption("Real Retrieval-Augmented Generation: your question is matched against all "
                f"{m['total_corpus']:,} reviews; the most relevant real reviews are retrieved "
                "and used as the ONLY basis for the answer.")
-    st.caption(f"🔎 Retrieval: **{RETRIEVER_MODE}**  ·  answer: "
-               f"**{'LLM-synthesized (Groq)' if os.environ.get('GROQ_API_KEY') else 'extractive'}**")
+    st.caption(f"🔎 Answer mode: "
+               f"**{'LLM-synthesized (Groq)' if os.environ.get('GROQ_API_KEY') else 'extractive'}** "
+               "· search index builds on your first query.")
 
     examples = ["Why do users feel recommendations are repetitive?",
                 "What do users say about Discover Weekly?",
@@ -261,6 +267,7 @@ with tabs[3]:
     topk = st.slider("How many reviews to retrieve", 4, 15, 6)
 
     if query:
+        RETRIEVER_MODE, SEARCH = get_retriever()
         idx, sims = SEARCH(query, topk)
         retrieved = clean.iloc[idx].copy()
         retrieved["score"] = sims[idx]

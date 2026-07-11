@@ -1,12 +1,12 @@
-# Lean deps for RELIABLE Streamlit Community Cloud builds (no torch).
-# The Off Repeat MVP (off_repeat_app.py) needs only streamlit + groq.
-# The review-engine app (app.py) uses pandas/numpy/plotly/scikit-learn and
-# gracefully falls back to TF-IDF keyword search when sentence-transformers
-# is absent — so dropping the ~2GB torch dependency fixes the failing builds
-# without breaking either app.
+# Pinned to STABLE, battle-tested wheels for Streamlit Community Cloud (Python 3.12).
+# Leaving these unpinned let uv resolve bleeding-edge builds (scipy 1.18 / numpy 2.5 /
+# pyarrow 25) whose fresh C-extensions SEGFAULT on the cloud runtime. These exact
+# versions have mature manylinux cp312 wheels and are known-good together.
 streamlit==1.50.0
-pandas>=2.2.3
-numpy>=2.1,<3
-plotly>=6.0
-scikit-learn>=1.5
+pandas==2.2.3
+numpy==2.1.3
+scipy==1.14.1
+scikit-learn==1.5.2
+pyarrow==17.0.0
+plotly==5.24.1
 groq>=0.11
